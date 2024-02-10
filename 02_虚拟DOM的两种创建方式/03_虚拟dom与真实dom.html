@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01_jsx</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+</head>
+<body>
+<!-- 准备好一个id为test的容器 -->
+<div id="test"></div>
+
+<script type="text/babel">
+    // 1. 创建虚拟dom 此处不加单引号，因为不是字符串
+    const vDom = (
+        <h1>
+            <span>Hello React</span>
+        </h1>
+    )
+    // 2. 渲染虚拟dom到页面
+    // React16 写法
+    // ReactDOM.render(vDom, document.getElementById('test'))
+    // React18 新写法
+    ReactDOM.createRoot(document.getElementById('test')).render(vDom)
+
+    console.log(vDom);
+    console.log(typeof vDom);
+    console.log(vDom instanceof Object);
+    /*
+      虚拟dom
+      1. 本质是Object类型的对象，一般对象
+      2. 虚拟dom比较轻量
+      3. 虚拟dom最终会被React转化成真实dom呈现在页面上
+     */
+</script>
+</body>
+</html>
