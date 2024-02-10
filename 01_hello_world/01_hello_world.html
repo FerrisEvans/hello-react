@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+    <!--    <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>-->
+    <!--    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>-->
+    <!--    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>-->
+</head>
+<body>
+<!-- 准备好一个id为test的容器 -->
+<div id="test"></div>
+
+<script type="text/babel">
+    // 1. 创建虚拟dom 此处不加单引号，因为不是字符串
+    const vDom = <h1>Hello React</h1>
+    // 2. 渲染虚拟dom到页面
+    ReactDOM.render(vDom, document.getElementById('test'))
+</script>
+</body>
+</html>
