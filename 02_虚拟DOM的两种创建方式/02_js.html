@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02_js</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+</head>
+<body>
+<!-- 准备好一个id为test的容器 -->
+<div id="test"></div>
+
+<script type="text/javascript">
+    // 1. 创建虚拟dom
+    const vDom = React.createElement('h1', {id: 'title'}, 'Hello React with JS')
+    // 2. 渲染虚拟dom到页面
+    // React16 写法
+    // ReactDOM.render(vDom, document.getElementById('test'))
+    // React18 新写法
+    ReactDOM.createRoot(document.getElementById('test')).render(vDom)
+</script>
+</body>
+</html>
