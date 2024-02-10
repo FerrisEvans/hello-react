@@ -1,3 +1,15 @@
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+components.d.ts
+
 # Logs
 logs
 *.log
@@ -6,6 +18,7 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 .pnpm-debug.log*
+pnpm-debug.log*
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
@@ -90,6 +103,9 @@ out
 # Nuxt.js build / generate output
 .nuxt
 dist
+node_modules
+dist-ssr
+*.local
 
 # Gatsby files
 .cache/
