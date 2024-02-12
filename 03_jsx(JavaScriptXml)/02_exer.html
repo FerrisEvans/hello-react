@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02_exer</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+</head>
+<style>
+    .title {
+        background-color: orange;
+        width: 200px;
+    }
+</style>
+<body>
+<!-- 准备好一个id为test的容器 -->
+<div id="test"></div>
+
+<script type="text/babel">
+    /* jsx 语法规则
+        1. 定义虚拟dom时，不要写引号
+        2. 标签中混入js表达式时，使用 {}
+        3. 样式的类名指定不要用class，要用className
+        4. 内联样式，要用style={{key:value}}的形式去写，遵守驼峰规则如fontSize
+        5. 虚拟dom必须只有一个根标签
+        6. 标签必须闭合
+        7. 标签中的首字母
+            若小写字母开头，则将标签转为html同名元素。若html中无该标签同名元素，则报错。
+            若大写字母开头，React就去渲染对应的组件。若组件没有定义，则报错。
+    */
+
+    const data = {
+        title: '前端js框架列表',
+        framework: [
+            'Angular', 'React', 'Vue'
+        ]
+    }
+
+    const vDom = (
+        <div>
+            <h1>{data.title}</h1>
+            <ul>
+                {
+                    data.framework.map((item, index) => {
+                        return <li key={index}>{item}</li>
+                    })
+                }
+            </ul>
+        </div>
+    )
+
+    ReactDOM.createRoot(document.getElementById('test')).render(vDom)
+
+</script>
+</body>
+</html>
