@@ -11,35 +11,25 @@
 <div id="test"></div>
 
 <script type="text/babel">
-    // 1. 创建类式组件
-    class Weather extends React.Component {
 
-        constructor(props) {
-            super(props)
-            // 初始化状态
-            this.state = {
-                hot: true
-            }
-            this.change = this.change.bind(this)
+    class Weather extends React.Component {
+        state = {
+            hot: true
         }
 
         render() {
-            console.log('render(),', this)
-            // 读取状态
             let temperature = this.state.hot ? '炎热' : '凉爽'
             return <h2 onClick={this.change}>今天天气很{temperature}</h2>
         }
 
-        change() {
-            console.log('change(),', this);
+        change = () => {
             this.setState({
                 hot: !this.state.hot
             })
         }
     }
 
-    // 2. 渲染组件到页面
-    ReactDOM.createRoot(document.getElementById('test')).render(<Weather />)
+    ReactDOM.createRoot(document.getElementById('test')).render(<Weather/>)
 </script>
 </body>
 </html>
