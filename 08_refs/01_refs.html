@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ref</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+</head>
+<body>
+<div id="test"></div>
+
+<script type="text/babel">
+    class Text extends React.Component {
+
+        click = () => {
+            const {input1} = this.refs
+            alert(input1.value)
+        }
+
+        blur = () => {
+            const {input2} = this.refs
+            let val = input2.value
+            if (val === null || val === undefined || val === '') {
+                return
+            }
+            alert(val)
+        }
+
+        render() {
+            return (
+                <div>
+                    <div>
+                        <label>
+                            <input ref="input1" type="text" placeholder="点击按钮提示"/>
+                        </label>&nbsp;
+                        <button onClick={this.click}>显示信息</button>
+                    </div>
+                    <br/>
+                    <div>
+                        <label>
+                            <input ref="input2" type="text" placeholder="失去焦点提示" onBlur={this.blur}/>
+                        </label>
+                    </div>
+                </div>
+            )
+        }
+
+
+    }
+
+    ReactDOM.createRoot(document.getElementById('test')).render(<Text/>)
+</script>
+</body>
+</html>
