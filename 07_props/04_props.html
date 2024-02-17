@@ -10,8 +10,6 @@
 </head>
 <body>
 <div id="test"></div>
-<div id="test1"></div>
-<div id="test2"></div>
 
 <script type="text/babel">
     class Person extends React.Component {
@@ -45,8 +43,6 @@
         age: 30,
         gender: 'male'
     }
-    ReactDOM.createRoot(document.getElementById('test1')).render(<Person name="Tom" age={19} gender="Male"/>)
-    ReactDOM.createRoot(document.getElementById('test2')).render(<Person name="Jerry" age={20} gender="Male"/>)
     ReactDOM.createRoot(document.getElementById('test')).render(<Person {...p}/>)
 </script>
 </body>
