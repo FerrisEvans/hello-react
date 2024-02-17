@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>props</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.8.1/prop-types.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+</head>
+<body>
+<div id="test"></div>
+
+<script type="text/babel">
+
+    function Person(props) {
+        return (
+            <ul>
+                <li>name: {props.name}</li>
+                <li>age: {props.age}</li>
+                <li>gender: {props.gender}</li>
+            </ul>
+        )
+    }
+
+    // 对标签属性进行类型等限制
+    Person.propTypes = {
+        name: PropTypes.string.isRequired,
+        age: PropTypes.number,
+        gender: PropTypes.string,
+    }
+    // 指定默认值
+    Person.defaultProps = {
+        gender: 'Secret',
+        age: 18,
+    }
+
+    const p = {
+        name: 'Jack',
+        age: 30,
+        gender: 'male'
+    }
+    ReactDOM.createRoot(document.getElementById('test')).render(<Person {...p}/>)
+</script>
+</body>
+</html>
