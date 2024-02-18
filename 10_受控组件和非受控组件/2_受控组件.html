@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ref</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+</head>
+<body>
+<div id="test"></div>
+
+<script type="text/babel">
+    class Login extends React.Component {
+        state = {
+            username: '',
+            password: '',
+        }
+
+        saveUsername = (event) => {
+            this.setState({
+                username: event.target.value
+            })
+        }
+
+        savePassword = (event) => {
+            this.setState({
+                password: event.target.value
+            })
+        }
+
+        doLogin = (event) => {
+            event.preventDefault()
+            let val = `username: ${this.state.username}; password: ${this.state.password}`
+            alert(val)
+        }
+
+        render() {
+            return (
+                <form onSubmit={this.doLogin}>
+                    <label>
+                        <input type="text" placeholder="account" name="username" onChange={this.saveUsername}/>
+                        &nbsp;
+                        <input type="password" placeholder="password" name="password" onChange={this.savePassword}/>
+                    </label>
+                    <br/>
+                    <p>username: {this.state.username}</p>
+                    <p>password: {this.state.password}</p>
+                    <button>Login</button>
+                </form>
+            )
+        }
+    }
+
+    ReactDOM.createRoot(document.getElementById('test')).render(<Login/>)
+</script>
+</body>
+</html>
