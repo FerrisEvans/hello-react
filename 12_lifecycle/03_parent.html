@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lifecycle OLD</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+</head>
+<body>
+<div id="test"></div>
+
+<script type="text/babel">
+    const dom = document.getElementById('test')
+    const root = ReactDOM.createRoot(dom)
+    const FA = 'Father[A]'
+    const FB = 'Father[B]'
+
+    class Father extends React.Component {
+
+        state = {
+            name: FA
+        }
+
+        change = () => {
+            let { name } = this.state
+            let str = name === FA ? FB : FA
+            this.setState({
+                name: str
+            })
+        }
+
+        render() {
+            return (
+                <div>
+                    <p>Father: {this.state.name}</p>
+                    <button onClick={this.change}>Change Name</button>
+                    <Son name={this.state.name}/>
+                </div>
+            )
+        }
+    }
+
+    class Son extends React.Component {
+
+        componentWillReceiveProps(props) {
+            console.log('Son componentWillReceiveProps', props)
+        }
+
+        render() {
+            return (
+                <div>
+                    <p>Son</p>
+                    <p>Father's name is: {this.props.name}</p>
+                </div>
+            )
+        }
+    }
+
+    root.render(<Father/>)
+</script>
+</body>
+</html>
