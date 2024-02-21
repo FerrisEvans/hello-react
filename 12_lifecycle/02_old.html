@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>lifecycle</title>
+    <title>lifecycle OLD</title>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
@@ -33,18 +33,53 @@
             console.log('4. Lifecycle componentDidMount')
         }
 
+        componentWillUnmount() {
+            console.log('6. Lifecycle componentWillUnmount')
+        }
+
+        componentWillReceiveProps() {
+            console.log('Lifecycle componentWillReceiveProps')
+        }
+
+        shouldComponentUpdate() {
+            // 控制是否执行setState 返回true 则执行更新，默认返回true
+            const flag = true
+            console.log('组件是否应该被更新 Lifecycle shouldComponentUpdate, return: ', flag)
+            return flag
+        }
+
+        componentWillUpdate() {
+            console.log('Lifecycle componentWillUpdate')
+        }
+
+        componentDidUpdate() {
+            console.log('Lifecycle componentDidUpdate')
+        }
+
         add = () => {
             this.setState({
                 sum: this.state.sum + 1
             })
+            console.log('Lifecycle add / setState')
+        }
+
+        force = () => {
+            this.forceUpdate()
+            console.log('Lifecycle force update')
+        }
+
+        unmount = () => {
+            root.unmount(dom)
         }
 
         render() {
-            console.log('3. Lifecycle render')
+            console.log('3/5. Lifecycle render')
             return (
                 <div>
                     <h2>Sum: {this.state.sum}</h2>
                     <button onClick={this.add}>+1</button>
+                    <button onClick={this.force}>force update</button>
+                    <button onClick={this.unmount}>unmount</button>
                 </div>
             )
         }
