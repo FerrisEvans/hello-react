@@ -11,6 +11,21 @@
 <div id="test"></div>
 
 <script type="text/babel">
+    /*
+    1. 初始化阶段，由ReactDom.render()触发，初次渲染
+        1. constructor()
+        2. getDerivedStateFromProps()
+        3. render()
+        4. componentDidMount() 【常用】初始化：开启定时器、发送网络请求、订阅消息
+    2. 更新阶段，由组件内部this.setState()/this.forceUpdate或父组件重新render()触发
+        1. getDerivedStateFromProps()
+        2. shouldComponentUpdate()
+        3. render()
+        4. getSnapshotBeforeUpdate()
+        5. componentDidUpdate()
+    3. 卸载组件，由ReactDom.unmountComponentAtNode()触发
+        1. componentWillUnmount() 【常用】收尾：关闭定时器、取消订阅消息
+     */
     const dom = document.getElementById('test')
     const root = ReactDOM.createRoot(dom)
     class Lifecycle extends React.Component {
