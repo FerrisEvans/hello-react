@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lifecycle NEW</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+</head>
+<body>
+<div id="test"></div>
+
+<script type="text/babel">
+    const dom = document.getElementById('test')
+    const root = ReactDOM.createRoot(dom)
+    class Lifecycle extends React.Component {
+
+        constructor() {
+            console.log('1. Lifecycle constructor')
+            super();
+            this.state = {
+                sum: 0
+            }
+        }
+
+        // 若state的值在任何时候都取决于props，那么可以使用getDerivedStateFromProps
+        static getDerivedStateFromProps(preProps, preState) {
+            console.log('2. Lifecycle static getDerivedStateFromProps', preProps, preState)
+            return null
+        }
+
+        // 组件挂载完毕
+        componentDidMount() {
+            console.log('4. Lifecycle componentDidMount')
+        }
+
+        // 在最近一次渲染输出（提交到DOM节点）之前调用。
+        getSnapshotBeforeUpdate() {
+            console.log('Lifecycle getSnapshotBeforeUpdate')
+            // 返回值将作为参数传递给componentDidUpdate()的第三个参数。
+            return null
+        }
+
+        componentWillUnmount() {
+            console.log('6. Lifecycle componentWillUnmount')
+        }
+
+        shouldComponentUpdate() {
+            // 控制是否执行setState 返回true 则执行更新，默认返回true
+            const flag = true
+            console.log('组件是否应该被更新 Lifecycle shouldComponentUpdate, return: ', flag)
+            return flag
+        }
+
+        componentDidUpdate(preProps, preState, snapshotVal) {
+            console.log('Lifecycle componentDidUpdate', preProps, preState, snapshotVal)
+        }
+
+        add = () => {
+            this.setState({
+                sum: this.state.sum + 1
+            })
+            console.log('Lifecycle add / setState')
+        }
+
+        force = () => {
+            this.forceUpdate()
+            console.log('Lifecycle force update')
+        }
+
+        unmount = () => {
+            root.unmount(dom)
+        }
+
+        render() {
+            console.log('3/5. Lifecycle render')
+            return (
+                <div>
+                    <h2>Sum: {this.state.sum}</h2>
+                    <button onClick={this.add}>+1</button>
+                    <button onClick={this.force}>force update</button>
+                    <button onClick={this.unmount}>unmount</button>
+                </div>
+            )
+        }
+    }
+
+    root.render(<Lifecycle/>)
+</script>
+</body>
+</html>
