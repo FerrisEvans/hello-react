@@ -3,15 +3,15 @@
 // import viteLogo from '/vite.svg'
 import './App.css'
 import {Component} from "react";
-import Hello from "./components/Hello";
+import TaskInput from "./components/TaskInput";
 
 export default class App extends Component<any, any> {
 
     render() {
         return (
-            <>
-                <Hello></Hello>
-            </>
+            <div>
+                <TaskInput></TaskInput>
+            </div>
         )
     }
 }
