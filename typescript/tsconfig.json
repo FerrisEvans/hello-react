@@ -1,0 +1,36 @@
+/* https://www.typescriptlang.org/tsconfig/ */
+{
+  /* ts编译器的配置文件 编译器根据他的配置信息对代码进行编译 */
+  /*
+  include: 指定哪些ts文件需要被编译
+  exclude: 指定不需要被编译的文件的路径 默认值：["node_modules", "bower_components", "jspm_packages"]
+  */
+  "include": ["./**/*"],
+  /* extends 定义被继承的配置文件 当配置文件比较复杂的时候使用 与import类似 */
+  /* files 指定被编译文件的列表，只有许哟啊编译的文件少时才会用到。跟include类似，只不过files是指定单个文件 */
+  /* 编译器选项 如果想查看具体配置项的可选值，可以输入一个错误的值，然后执行tsc命令，命令行报错中就会提示出来都可以填写哪些值*/
+  "compilerOptions": {
+    /* 用来指定ts被编译成的es版本 */
+    "target": "es2016",
+    /* 指定要使用的模块化的规范 */
+    "module": "commonjs",
+    /* lib: [] 用来指定项目中要使用的库。一般不写，默认值就是浏览器的运行时环境 */
+    /* outDir 用来指定编译后文件所在目录 */
+    "outDir": "./dist",
+    /* outFile 将代码合并为一个文件 设置outFile以后，全局作用域中对代码，会合并到同一个文件中。一般不写，会结合打包工具使用 */
+    /* allowJs 是否对js文件进行编译，默认false，写完的js文件不会进行编译 */
+    /* checkJs 是否检查js代码是否符合语法规范，默认false */
+    /* removeComments 是否移除注释 默认false */
+    /* noEmit 不生成编译后的文件 */
+    /* noEmitOnError 当有错误时，不生成编译后的文件 */
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    /* alwaysStrict 设置编译后的文件是否使用严格模式，默认false */
+    /* noImplicitlyAny 不允许隐式的any类型。默认false */
+    /* noImplicitlyThis 不允许不明确类型的this。默认false */
+    /* strictNullChecks 严格检查空值。默认false */
+    /* strict 所有严格检查的总开关 */
+    "strict": true,
+    "skipLibCheck": true
+  }
+}
