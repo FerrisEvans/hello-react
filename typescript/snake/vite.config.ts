@@ -6,5 +6,12 @@ export default defineConfig({
     server: {
         open: true,
         cors: true
+    },
+    css: {
+        preprocessorOptions: {
+            less: {
+                javascriptEnabled: true
+            }
+        }
     }
 })
