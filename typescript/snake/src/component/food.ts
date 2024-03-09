@@ -1,4 +1,4 @@
-class Food {
+export default class Food {
     e: HTMLElement
 
     constructor() {
