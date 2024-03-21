@@ -24,6 +24,10 @@ li button {
     margin-top: 3px;
 }
 
+li:hover button {
+    display: inline-block;
+}
+
 li:before {
     contain: initial;
 }

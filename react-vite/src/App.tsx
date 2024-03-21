@@ -1,22 +1,47 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-import {Component} from "react";
-
-import Header from './components/Header'
-import List from './components/List'
+import {Header} from './components/Header'
+import {List} from './components/List'
 import Footer from './components/Footer'
 import './App.css'
+import React, {useState} from "react";
 
-export default function App() {
+const App: React.FC = () => {
+    const [todos, setTodos] = useState<Array<Todo>>([
+        {
+            text: 'My First Todo',
+            complete: false
+        },
+        {
+            text: 'My Second Todo',
+            complete: false
+        },
+        {
+            text: 'My Third Todo',
+            complete: false
+        }
+    ])
+
+    const toggleComplete: ToggleComplete = selectedTodo => {
+        const updatedTodos = todos?.map(todo => {
+            if (todo === selectedTodo) {
+                return {...todo, complete: !todo.complete}
+            }
+            return todo
+        })
+        setTodos(updatedTodos)
+    }
+    const addTodo: AddTodo = newTodo => {
+        newTodo.trim() !== '' && setTodos([...todos, {text: newTodo, complete: false}])
+    }
 
     return (
         <div className='todo-container'>
             <div className='todo-wrap'>
-                <Header></Header>
-                <List></List>
+                <Header addTodo={addTodo}></Header>
+                <List todos={todos} toggleComplete={toggleComplete}></List>
                 <Footer></Footer>
             </div>
         </div>
-    );
+    )
 }
+
+export default App
