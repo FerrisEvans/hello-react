@@ -33,12 +33,25 @@ const App: React.FC = () => {
         newTodo.trim() !== '' && setTodos([...todos, {text: newTodo, complete: false}])
     }
 
+    const clearDone: ClearDone = () => {
+        let notDone = new Array<Todo>()
+        if (todos.length <= 0) {
+            return
+        }
+        todos.map(todo => {
+            if (!todo.complete) {
+                notDone = [...notDone, todo]
+            }
+        })
+        setTodos(notDone)
+    }
+
     return (
         <div className='todo-container'>
             <div className='todo-wrap'>
                 <Header addTodo={addTodo}></Header>
                 <List todos={todos} toggleComplete={toggleComplete}></List>
-                <Footer todos={todos}></Footer>
+                <Footer todos={todos} clearDone={clearDone}></Footer>
             </div>
         </div>
     )

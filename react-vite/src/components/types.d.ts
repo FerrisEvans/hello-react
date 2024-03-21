@@ -5,3 +5,4 @@ type Todo = {
 
 type ToggleComplete = (selectedTodo: Todo) => void
 type AddTodo = (newTodo: string) => void
+type ClearDone = () => void

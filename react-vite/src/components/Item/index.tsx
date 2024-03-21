@@ -8,7 +8,7 @@ interface ItemProps {
 }
 
 export const Item: React.FC<ItemProps> = ({todo, toggleComplete}) => {
-//style={{display:'none'}}
+
     return (
         <li>
             <label>

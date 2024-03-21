@@ -1,12 +1,13 @@
-import React, {Component} from "react";
+import React, {Component, useState} from "react";
 
 import './index.css'
 
 interface FooterProps {
     todos: Array<Todo>
+    clearDone: ClearDone
 }
 
-export const Footer: React.FC<FooterProps> = ({todos}) => {
+export const Footer: React.FC<FooterProps> = ({todos, clearDone}) => {
 
     const allTask = todos.length
     let done = 0
@@ -16,6 +17,7 @@ export const Footer: React.FC<FooterProps> = ({todos}) => {
         }
     })
 
+
     return (
         <div className='todo-footer'>
             <label>
@@ -24,7 +26,7 @@ export const Footer: React.FC<FooterProps> = ({todos}) => {
             <span>
                 <span>已完成：{done}</span> / 全部：{allTask}
             </span>
-            <button className='btn btn-danger'>清除已完成任务</button>
+            <button className='btn btn-danger' onClick={clearDone}>清除已完成任务</button>
         </div>
     )
 }
