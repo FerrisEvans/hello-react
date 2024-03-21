@@ -1,6 +1,6 @@
 import {Header} from './components/Header'
 import {List} from './components/List'
-import Footer from './components/Footer'
+import {Footer} from './components/Footer'
 import './App.css'
 import React, {useState} from "react";
 
@@ -38,7 +38,7 @@ const App: React.FC = () => {
             <div className='todo-wrap'>
                 <Header addTodo={addTodo}></Header>
                 <List todos={todos} toggleComplete={toggleComplete}></List>
-                <Footer></Footer>
+                <Footer todos={todos}></Footer>
             </div>
         </div>
     )
