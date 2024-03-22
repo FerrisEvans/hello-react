@@ -5,9 +5,10 @@ import './index.css'
 interface FooterProps {
     todos: Array<Todo>
     clearDone: ClearDone
+    selectAll: SelectAll
 }
 
-export const Footer: React.FC<FooterProps> = ({todos, clearDone}) => {
+export const Footer: React.FC<FooterProps> = ({todos, clearDone, selectAll}) => {
 
     const allTask = todos.length
     let done = 0
@@ -21,7 +22,10 @@ export const Footer: React.FC<FooterProps> = ({todos, clearDone}) => {
     return (
         <div className='todo-footer'>
             <label>
-                <input type='checkbox'/>
+                <input
+                    type='checkbox'
+                    onChange={selectAll}
+                />
             </label>
             <span>
                 <span>已完成：{done}</span> / 全部：{allTask}

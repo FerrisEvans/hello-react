@@ -48,7 +48,7 @@ const App: React.FC = () => {
 
     const deleteItem: DeleteItem = item => {
         let notDel = new Array<Todo>()
-        todos.map((todo, index) => {
+        todos.map(todo => {
             if (todo.text !== item.text) {
                 notDel = [...notDel, todo]
             }
@@ -56,12 +56,53 @@ const App: React.FC = () => {
         setTodos(notDel)
     }
 
+    const selectAll: SelectAll = () => {
+        if (todos.length <= 0) {
+            return
+        }
+        let all = new Array<Todo>()
+        if (todos.length == 1) {
+            all = [{
+                text: todos[0].text,
+                complete: !todos[0].complete
+            }]
+            setTodos(all)
+            return
+        }
+
+        let same = true
+        for (let i = 1; i < todos.length; i++) {
+            if (todos[i].complete !== todos[0].complete) {
+                same = false
+                break
+            }
+        }
+
+        if (same) {
+            todos.map(todo => {
+                all = [...all, {
+                    text: todo.text,
+                    complete: !todo.complete
+                }]
+            })
+        } else {
+            todos.map(todo => {
+                all = [...all, {
+                    text: todo.text,
+                    complete: true
+                }]
+            })
+        }
+
+        setTodos(all)
+    }
+
     return (
         <div className='todo-container'>
             <div className='todo-wrap'>
                 <Header addTodo={addTodo}></Header>
                 <List todos={todos} toggleComplete={toggleComplete} deleteItem={deleteItem}></List>
-                <Footer todos={todos} clearDone={clearDone}></Footer>
+                <Footer todos={todos} clearDone={clearDone} selectAll={selectAll}></Footer>
             </div>
         </div>
     )
