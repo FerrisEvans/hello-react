@@ -46,11 +46,21 @@ const App: React.FC = () => {
         setTodos(notDone)
     }
 
+    const deleteItem: DeleteItem = item => {
+        let notDel = new Array<Todo>()
+        todos.map((todo, index) => {
+            if (todo.text !== item.text) {
+                notDel = [...notDel, todo]
+            }
+        })
+        setTodos(notDel)
+    }
+
     return (
         <div className='todo-container'>
             <div className='todo-wrap'>
                 <Header addTodo={addTodo}></Header>
-                <List todos={todos} toggleComplete={toggleComplete}></List>
+                <List todos={todos} toggleComplete={toggleComplete} deleteItem={deleteItem}></List>
                 <Footer todos={todos} clearDone={clearDone}></Footer>
             </div>
         </div>
