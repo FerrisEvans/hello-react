@@ -14,11 +14,19 @@
     /*
     React.createElement() 创建一个React元素
     参数：
-        1. 元素名/组件名
+        1. 元素名/组件名 html标签必须小写。如果大写，会被识别成组件名
         2. 元素中的属性
+            - class属性需要使用className来设置
+            - 在设置事件时，属性名需要修改为驼峰命名法
         3. 元素的子元素/内容
+    React元素最终会通过虚拟dom转换为真实dom元素
+    React元素一旦创建就无法修改，只能通过创建新的元素进行替换
      */
     const div = React.createElement('div', {}, 'React Div')
+    /*
+    root.render() 用来将React元素渲染到根元素中 根元素中所有的内容都会被删除，被React元素所替换
+        当render()重复调用的时候，React会将两次的渲染结果进行比较，会确保只修改哪些发生变化的元素，对dom做最少的修改
+     */
     ReactDOM.createRoot(document.getElementById('test')).render(div)
 </script>
 </body>
