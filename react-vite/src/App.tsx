@@ -18,7 +18,7 @@ const App: React.FC = () => {
     return (
         <div className='logs'>
             {
-                items.map(item => <Item date={item.date} desc={item.desc} time={item.time}/>)
+                items.map((item, index) => <Item key={index} date={item.date} desc={item.desc} time={item.time}/>)
             }
         </div>
     )
