@@ -6,6 +6,7 @@ interface ContentProps {
     desc: string
     time: number
 }
+
 const Content: React.FC<ContentProps> = ({desc, time}) => {
     return (
         <div className="content">
