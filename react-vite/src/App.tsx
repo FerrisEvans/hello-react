@@ -1,25 +1,23 @@
 import './App.css'
-import React from "react";
-import Item from "./components/Item";
+import React, {useState} from "react";
 
 const App: React.FC = () => {
-    const items: Array<Items> = [
-        {
-            date: new Date(),
-            desc: '学习React',
-            time: 20
-        }, {
-            date: new Date(2021, 10, 20),
-            desc: '学习Vue',
-            time: 45
-        }
-    ]
+    const [count, setCount] = useState(1)
+
+    const add = () => {
+        setCount(perv => perv + 1)
+    }
+
+    const minus = () => {
+        setCount(perv => perv - 1)
+    }
+
 
     return (
-        <div className='logs'>
-            {
-                items.map((item, index) => <Item key={index} date={item.date} desc={item.desc} time={item.time}/>)
-            }
+        <div className='app'>
+            <h1>{count}</h1>
+            <button onClick={minus}>-</button>
+            <button onClick={add}>+</button>
         </div>
     )
 }

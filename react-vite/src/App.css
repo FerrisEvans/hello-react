@@ -7,11 +7,17 @@ body {
     margin: 0;
 }
 
-.logs {
-    width: 800px;
-    background-color: #eae2b7;
+.app {
+    width: 300px;
+    height: 300px;
     margin: 50px auto;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background-color: #bfc;
+    text-align: center;
+}
+
+.app button {
+    width: 100px;
+    font-size: 50px;
+    margin: 0 20px;
+
 }
