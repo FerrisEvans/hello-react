@@ -1,0 +1,6 @@
+.item {
+    display: flex;
+    margin: 16px 0;
+    background-color: #fcbf49;
+    padding: 10px;
+}
