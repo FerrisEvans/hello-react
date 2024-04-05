@@ -7,10 +7,14 @@ body {
     margin: 0;
 }
 
-.logs {
+.app {
     width: 800px;
-    background-color: #eae2b7;
     margin: 50px auto;
+}
+
+.logs {
+    width: 100%;
+    background-color: #eae2b7;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);

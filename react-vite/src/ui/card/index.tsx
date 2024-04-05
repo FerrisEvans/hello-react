@@ -1,7 +1,14 @@
 import React from 'react';
 
 import './index.css'
-const Card = (props) => {
+
+interface CardProps {
+  className?: string
+  children?: React.ReactNode
+  key?: number
+}
+
+const Card = (props: CardProps) => {
   return (
     <div className={`card ${props.className}`}>
       {props.children}
