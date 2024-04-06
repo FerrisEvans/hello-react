@@ -1,6 +1,7 @@
 interface Items {
   date: Date,
   desc: string,
-  time: number,
-  key: number
+  time: number
 }
+
+type Add = (Items) => void
