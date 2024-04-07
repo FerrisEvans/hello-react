@@ -1,6 +1,22 @@
+
 .item {
     display: flex;
     margin: 16px 0;
     background-color: #fcbf49;
     padding: 10px;
+}
+
+.delete {
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    line-height: 20px;
+    transition: 0.5s;
+}
+
+.delete:hover {
+    color: #d62828;
+    transform: rotate(1turn);
 }

@@ -5,3 +5,4 @@ interface Items {
 }
 
 type Add = (Items) => void
+type Del = (number) => () => void

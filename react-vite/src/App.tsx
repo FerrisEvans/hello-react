@@ -26,12 +26,31 @@ const App: React.FC = () => {
     }])
   }
 
+  const del: Del = (index: number) => {
+    return () => {
+      setItems(prev => {
+        const logs = [...prev]
+        logs.splice(index, 1)
+        return logs
+      })
+    }
+  }
+
   return (
     <div className='app'>
       <Form add={add}></Form>
       <Card className='logs'>
         {
-          items.map((item, index) => <Item key={index} date={item.date} desc={item.desc} time={item.time}/>)
+          items.map((item, index) => {
+            return <Item
+              key={index}
+              date={item.date}
+              desc={item.desc}
+              time={item.time}
+              del={del}
+              index={index}
+            />
+          })
         }
       </Card>
     </div>
