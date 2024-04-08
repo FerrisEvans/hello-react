@@ -1,0 +1,46 @@
+.modal {
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  width: 400px;
+  color: #d62828;
+  background-color: #fff;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  padding: 10px;
+}
+
+.text {
+  display: flex;
+  height: 150px;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+}
+
+.button {
+  display: flex;
+  flex: auto;
+  justify-content: flex-end;
+}
+
+.button > button {
+  width: 80px;
+  margin: 0 10px;
+  border: none;
+  background-color: #eae2b7;
+  font-weight: bold;
+}
+
+.button > button:hover {
+  cursor: pointer;
+}
+
+#confirm {
+  background-color: #d62828;
+  color: #fff;
+}
