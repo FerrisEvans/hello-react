@@ -3,6 +3,7 @@ import React, {useState} from "react";
 import Item from "./components/Item";
 import Card from "./ui/card";
 import Form from "./components/Form";
+import Filter from "./components/Filter";
 
 const App: React.FC = () => {
 
@@ -14,6 +15,14 @@ const App: React.FC = () => {
     }, {
       date: new Date(2021, 10, 20),
       desc: '学习Vue',
+      time: 45
+    }, {
+      date: new Date(2022, 5, 6),
+      desc: '九阳神功',
+      time: 45
+    }, {
+      date: new Date(2023, 2, 12),
+      desc: '吸星大法',
       time: 45
     }
   ])
@@ -36,12 +45,23 @@ const App: React.FC = () => {
     }
   }
 
+  const [year, setYear] = useState(2024)
+  const changeYear = (year: number) => {
+    setYear(year)
+  }
+
+  let filterData = items.filter(item => item.date.getFullYear() == year)
+
   return (
     <div className='app'>
       <Form add={add}></Form>
       <Card className='logs'>
+        <Filter
+          year={year}
+          changeYear={changeYear}
+        ></Filter>
         {
-          items.map((item, index) => {
+          filterData.map((item, index) => {
             return <Item
               key={index}
               date={item.date}
