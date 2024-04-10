@@ -1,3 +1,4 @@
+import React from "react";
 import Card from "../../ui/card";
 
 import './index.css'
@@ -20,8 +21,12 @@ const Form = ({add} : FormProps) => {
     add(item)
   }
 
+  /**
+   * React.Fragment 是一个专门用来作为父容器的组件，他只会将他里边的子元素直接返回，不会创建任何多余的元素。
+   * 使用 <></> 幽灵标签也可以达到一样的效果。
+   */
   return (
-    <>
+    <React.Fragment>
       <Card className="form">
         <form>
           <div className='form-item'>
@@ -39,7 +44,7 @@ const Form = ({add} : FormProps) => {
           <button onClick={submit}>Create</button>
         </form>
       </Card>
-    </>
+    </React.Fragment>
   );
 };
 
