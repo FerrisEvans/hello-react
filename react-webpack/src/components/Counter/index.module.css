@@ -1,3 +1,30 @@
 .counter {
   display: flex;
+  align-items: center;
+}
+
+.counter > button {
+  border: none;
+  height: 36rem;
+  line-height: 36rem;
+  width: 36rem;
+  font-size: 20rem;
+  border-radius: 50%;
+  padding: 0;
+  background-color: #fcbf49;
+}
+
+.counter > .sub {
+  background-color: #fff;
+  border: 1px solid black;
+
+}
+
+.counter > span {
+  font-size: 30rem;
+  margin: 0 20rem;
+}
+
+.counter > .add {
+
 }
