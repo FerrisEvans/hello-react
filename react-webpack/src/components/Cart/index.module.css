@@ -1,0 +1,21 @@
+.cart {
+  background-color: #333;
+}
+
+.count {
+  background-color: #d62828;
+  color: #bbb;
+  /*font-size: 40rem;*/
+  height: 40rem;
+  line-height: 40rem;
+  width: 40rem;
+  font-weight: bold;
+  border-radius: 50%;
+  text-align: center;
+  overflow: hidden;
+}
+
+.bag > img {
+  height: 80rem;
+  width: 80rem;
+}
