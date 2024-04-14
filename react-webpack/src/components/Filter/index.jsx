@@ -5,7 +5,10 @@ import {faSearch} from "@fortawesome/free-solid-svg-icons";
 const Filter = (props) => {
 
   const filter = (e) => {
-    const value = e.target.value;
+    const value = e.target.value.trim();
+    if (!value) {
+      return;
+    }
     const arr = []
     props.cartInfo.map((item, index) => {
       const newItem = {...item, show: item.name.toLowerCase().includes(value.toLowerCase())};
