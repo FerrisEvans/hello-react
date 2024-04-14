@@ -4,6 +4,7 @@ import Cart from "./components/Cart";
 import {useState} from "react";
 import ham from "./data/ham";
 import FoodFnCtx from "./store/context";
+import Filter from "./components/Filter";
 
 function App() {
   const burgers = ham();
@@ -47,6 +48,7 @@ function App() {
   }
   return (
     <div className="App">
+      <Filter></Filter>
       <FoodFnCtx.Provider value={{
         addFood,
         removeFood
