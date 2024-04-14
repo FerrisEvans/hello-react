@@ -12,6 +12,7 @@ function App() {
   let arr = []
   burgers.map(item => {
     arr.push(Object.assign(item, {
+      show: true,
       count: 0
     }))
   })
@@ -46,9 +47,17 @@ function App() {
       setCartInfo(arr)
     }
   }
+
+  const changeShow = (arr) => {
+    setCartInfo(arr)
+  }
+
   return (
     <div className="App">
-      <Filter></Filter>
+      <Filter
+        cartInfo={cartInfo}
+        changeShow={changeShow}
+      ></Filter>
       <FoodFnCtx.Provider value={{
         addFood,
         removeFood

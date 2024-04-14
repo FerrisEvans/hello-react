@@ -6,7 +6,7 @@ import FoodFnCtx from "../../store/context";
 const Food = (props) => {
   const foodFnCtx = useContext(FoodFnCtx)
 
-  return (
+  return props.item.show && (
     <div className={classes.food}>
       <div className={classes.foodPic}>
         <img src={props.item.pic} alt="food-pic" />
