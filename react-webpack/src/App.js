@@ -3,6 +3,7 @@ import Menu from "./components/Menu";
 import Cart from "./components/Cart";
 import {useState} from "react";
 import ham from "./data/ham";
+import FoodFnCtx from "./store/context";
 
 function App() {
   const burgers = ham();
@@ -44,14 +45,16 @@ function App() {
       setCartInfo(arr)
     }
   }
-
   return (
     <div className="App">
-      <Menu
-        cartInfo={cartInfo}
-        addFood={addFood}
-        removeFood={removeFood}
-      ></Menu>
+      <FoodFnCtx.Provider value={{
+        addFood,
+        removeFood
+      }}>
+        <Menu
+          cartInfo={cartInfo}
+        ></Menu>
+      </FoodFnCtx.Provider>
       <Cart
         cartInfo={cartInfo}
       ></Cart>

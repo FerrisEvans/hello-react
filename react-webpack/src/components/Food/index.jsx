@@ -1,7 +1,10 @@
 import classes from'./index.module.css'
 import Counter from "../Counter";
+import {useContext} from "react";
+import FoodFnCtx from "../../store/context";
 
 const Food = (props) => {
+  const foodFnCtx = useContext(FoodFnCtx)
 
   return (
     <div className={classes.food}>
@@ -19,8 +22,8 @@ const Food = (props) => {
           <p>{props.item.price}</p>
           <Counter
             count={props.item.count}
-            add={props.addFood(props.item)}
-            sub={props.removeFood(props.item)}
+            add={foodFnCtx.addFood(props.item)}
+            sub={foodFnCtx.removeFood(props.item)}
           ></Counter>
         </div>
       </div>

@@ -13,8 +13,15 @@ const Cart = (props) => {
     <div className={classes.cart}>
       <div className={classes.bag}>
         <img src='./asset/shopping.png' alt='shopping-cart'/>
-        <div className={classes.count}>{totalAmount}</div>
-        <div className={classes.count}>{totalCost}</div>
+        {
+          totalAmount > 0 && (
+            <div className={classes.count}>{totalAmount}</div>
+        )}
+        {
+          totalCost > 0 ?
+            <div className={classes.cost}>{totalCost}</div> :
+            <div className={classes.nothing}>未选购商品</div>
+        }
       </div>
     </div>
   );
