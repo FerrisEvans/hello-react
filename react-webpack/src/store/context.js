@@ -9,7 +9,8 @@ Context 相当于一个公共的存储空间，我们可以将多个组件都需
  */
 const FoodFnCtx = React.createContext({
   addFood: (item) => {},
-  removeFood: (item) => {}
+  removeFood: (item) => {},
+  clearCart: () => {},
 })
 
 export default FoodFnCtx;

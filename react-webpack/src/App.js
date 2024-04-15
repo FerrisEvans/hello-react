@@ -47,6 +47,14 @@ function App() {
       setCartInfo(arr)
     }
   }
+  const clearCart = () => {
+      const arr = [...cartInfo];
+      arr.map((item, index) => {
+        const newItem = {...item, count: 0};
+        arr.splice(index, 1, newItem);
+      })
+      setCartInfo(arr)
+  }
 
   const changeShow = (arr) => {
     setCartInfo(arr)
@@ -60,15 +68,16 @@ function App() {
       ></Filter>
       <FoodFnCtx.Provider value={{
         addFood,
-        removeFood
+        removeFood,
+        clearCart
       }}>
         <Menu
           cartInfo={cartInfo}
         ></Menu>
+        <Cart
+          cartInfo={cartInfo}
+        ></Cart>
       </FoodFnCtx.Provider>
-      <Cart
-        cartInfo={cartInfo}
-      ></Cart>
     </div>
   );
 }

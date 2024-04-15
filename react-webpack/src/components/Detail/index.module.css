@@ -1,0 +1,31 @@
+.detail {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding-bottom: 120rem;
+  border-top-left-radius: 40rem;
+  border-top-right-radius: 40rem;
+  background-color: #f2f2f2;
+}
+
+.detail > header {
+  display: flex;
+  justify-content: space-between;
+  padding: 30rem;
+}
+
+h4 {
+  margin: 0;
+  font-size: 30rem;
+  font-weight: bold;
+}
+
+header div {
+  color: #666;
+  font-size: 24rem;
+  z-index: 1001;
+}
+
+header div span {
+  margin-left: 20rem;
+}

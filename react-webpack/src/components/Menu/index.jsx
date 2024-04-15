@@ -9,6 +9,7 @@ const Menu = (props) => {
         return (<Food
           key={item.id}
           item={item}
+          showDesc={false}
         />)
       })}
     </div>

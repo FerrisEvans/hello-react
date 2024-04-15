@@ -1,4 +1,6 @@
 import classes from './index.module.css'
+import Detail from "../Detail";
+import {useState} from "react";
 
 const Cart = (props) => {
   const cart = props.cartInfo
@@ -9,8 +11,21 @@ const Cart = (props) => {
     totalCost += (item.price) * (item.count)
   })
 
+  const [show, setShow] = useState(false)
+  const showDetail = () => {
+    setShow(!show)
+  }
+
+  const hideDetail = () => {
+    console.log('Temp func for test!')
+    setShow(!show)
+  }
+
   return (
     <div className={classes.cart}>
+      {show && <Detail
+        cartInfo={props.cartInfo}
+      ></Detail>}
       <div className={classes.bag}>
         <img src='./asset/shopping.png' alt='shopping-cart'/>
         {
@@ -22,7 +37,12 @@ const Cart = (props) => {
           <div className={classes.cost}>{totalCost}</div> :
           <div className={classes.nothing}>未选购商品</div>
       }
-      <button className={totalCost > 0 ? classes.costButton : classes.nothingButton}>去结算</button>
+      {
+        totalCost > 0 ?
+          <button className={classes.costButton} onClick={showDetail}>去结算</button> :
+           <button className={classes.nothingButton} onClick={hideDetail}>去结算</button>
+      }
+
     </div>
   );
 };
