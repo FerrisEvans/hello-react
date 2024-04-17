@@ -15,11 +15,9 @@ const Food = (props) => {
         <div className={classes.foodName}>
           {props.item.name}
         </div>
-        {
-          props.showDesc && <div className={classes.foodDesc}>
-            {props.item.desc}
-          </div>
-        }
+        <div className={classes.foodDesc}>
+          {props.item.desc}
+        </div>
         <div className={classes.foodPrice}>
           <p>{props.item.price}</p>
           <Counter
