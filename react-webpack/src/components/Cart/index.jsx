@@ -1,6 +1,7 @@
 import classes from './index.module.css'
 import Detail from "../Detail";
-import {useState} from "react";
+import {useContext, useState} from "react";
+import FoodFnCtx from "../../store/context";
 
 const Cart = (props) => {
   const cart = props.cartInfo
@@ -12,19 +13,27 @@ const Cart = (props) => {
   })
 
   const [show, setShow] = useState(false)
+  const foodFnCtx = useContext(FoodFnCtx)
   const showDetail = () => {
-    setShow(!show)
+    setShow(prevState => !prevState)
   }
 
   const hideDetail = () => {
-    console.log('Temp func for test!')
-    setShow(!show)
+    setShow(false)
+  }
+
+  const clear = () => {
+    setShow(prevState => false)
+    foodFnCtx.clearCart();
+    console.log('show', show)
   }
 
   return (
     <div className={classes.cart}>
       {show && <Detail
         cartInfo={props.cartInfo}
+        clearCart={clear}
+        showDetail={showDetail}
       ></Detail>}
       <div className={classes.bag}>
         <img src='./asset/shopping.png' alt='shopping-cart'/>
