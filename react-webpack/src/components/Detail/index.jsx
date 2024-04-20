@@ -11,7 +11,10 @@ const Detail = (props) => {
   const foodFnCtx = useContext(FoodFnCtx)
 
   const removeFormCart = (item) => {
-    return foodFnCtx.removeFood(item)
+    return () => {
+
+      foodFnCtx.removeFood(item)()
+    }
   }
 
   return (
@@ -25,10 +28,10 @@ const Detail = (props) => {
           </div>
         </header>
         <div className={classes.content}>
-        {
-          cartInfo.map(item => {
-            if (item.count > 0 && item.show) {
-              return (
+          {
+            cartInfo.map(item => {
+              if (item.count > 0 && item.show) {
+                return (
                   <div className={classes.food} key={item.id}>
                     <div className={classes.foodPic}>
                       <img src={item.pic} alt="food-pic"/>
@@ -47,10 +50,11 @@ const Detail = (props) => {
                       </div>
                     </div>
                   </div>
-              )
-            }
-          })
-        }
+                )
+              }
+              return null
+            })
+          }
         </div>
       </div>
     </Backdrop>

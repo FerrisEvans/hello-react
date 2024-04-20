@@ -25,7 +25,6 @@ const Cart = (props) => {
   const clear = () => {
     setShow(prevState => false)
     foodFnCtx.clearCart();
-    console.log('show', show)
   }
 
   return (
@@ -49,7 +48,7 @@ const Cart = (props) => {
       {
         totalCost > 0 ?
           <button className={classes.costButton} onClick={showDetail}>去结算</button> :
-           <button className={classes.nothingButton} onClick={hideDetail}>去结算</button>
+          <button className={classes.nothingButton} onClick={hideDetail}>去结算</button>
       }
 
     </div>
