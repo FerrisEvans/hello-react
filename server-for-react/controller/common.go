@@ -11,10 +11,10 @@ type Res struct {
 	Data interface{} `json:"data"`
 }
 
-func Success(c *gin.Context, code int, msg string, data interface{}) {
+func Success(c *gin.Context, data interface{}) {
 	json := &Res{
-		Code: code,
-		Msg:  msg,
+		Code: 200,
+		Msg:  "Success",
 		Data: data,
 	}
 	c.JSON(http.StatusOK, json)

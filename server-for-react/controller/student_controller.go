@@ -22,7 +22,7 @@ func NewStudentController(db *gorm.DB) *StudentController {
 // localhost:8080/stu/list
 func (ctrl *StudentController) GetAllStudentsHandler(c *gin.Context) {
 	students := ctrl.StudentService.GetAllStudents()
-	c.JSON(http.StatusOK, students)
+	Success(c, students)
 }
 
 func (ctrl *StudentController) GetStudentByIDHandler(c *gin.Context) {
@@ -35,7 +35,7 @@ func (ctrl *StudentController) GetStudentByIDHandler(c *gin.Context) {
 
 	var student model.Student
 	student = ctrl.StudentService.GetStudentById(studentID)
-	c.JSON(http.StatusOK, student)
+	Success(c, student)
 }
 
 func (ctrl *StudentController) CreateStudentHandler(c *gin.Context) {
@@ -47,7 +47,7 @@ func (ctrl *StudentController) CreateStudentHandler(c *gin.Context) {
 
 	ctrl.StudentService.CreateStudent(&student)
 
-	c.JSON(http.StatusCreated, student)
+	Success(c, student)
 }
 
 // UpdateStudentHandler 更新学生信息的处理函数
@@ -60,8 +60,7 @@ func (ctrl *StudentController) UpdateStudentHandler(c *gin.Context) {
 	}
 
 	ctrl.StudentService.UpdateStudent(&updatedStudent)
-
-	c.JSON(http.StatusOK, gin.H{"message": "Student updated successfully"})
+	Success(c, gin.H{"message": "Student updated successfully"})
 }
 
 // DeleteStudentHandler 删除学生信息的处理函数
@@ -74,5 +73,5 @@ func (ctrl *StudentController) DeleteStudentHandler(c *gin.Context) {
 	}
 
 	ctrl.StudentService.DeleteStudentById(studentID)
-	c.JSON(http.StatusOK, gin.H{"message": "Student deleted successfully"})
+	Success(c, gin.H{"message": "Student deleted successfully"})
 }
