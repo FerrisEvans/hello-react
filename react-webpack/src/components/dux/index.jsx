@@ -1,13 +1,7 @@
 import './index.css'
-import * as Redux from "redux";
 import '../../store'
-const reducer = (prev, action) => {
-  switch(action.type.toUpperCase()) {
-    case 'ADD': return prev + 1;
-    case 'SUB': return prev - 1;
-    default: return prev;
-  }
-}
+import {useDispatch, useSelector} from "react-redux";
+import {add, sub, store} from "../../store";
 const Dux = () => {
 
   /*
@@ -18,22 +12,21 @@ const Dux = () => {
   4. 对store中对state进行订阅
   5. 通过dispatch派发state的操作指令
   */
-  const store = Redux.createStore(reducer)
-  store.subscribe(() => {
-    console.log(store.getState());
-  });
+  // const store = Redux.createStore(reducer)
+  // store.subscribe(() => {
+  //   console.log(store.getState());
+  // });
 
-  const add = () => {
-    store.dispatch({
-      type: 'ADD',
-    })
-  }
-  const sub = () => {
-    store.dispatch({
-      type: 'SUB',
-    })
-  }
+  const rtkStore = useSelector(state => state.stu)
 
+  const dispatch = useDispatch();
+
+  const plus = () => {
+    dispatch(add(3))
+  }
+  const minus = () => {
+    dispatch(sub(2))
+  }
 
   return (
     <div className="dux">
@@ -41,9 +34,9 @@ const Dux = () => {
         <h2>Redux</h2>
       </div>
       <div>
-        <button onClick={sub}>-</button>
-        <h1>{store.getState()}</h1>
-        <button onClick={add}>+</button>
+        <button onClick={minus}>-</button>
+        <h1>{rtkStore.count}</h1>
+        <button onClick={plus}>+</button>
       </div>
     </div>
   );

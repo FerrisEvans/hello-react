@@ -1,6 +1,8 @@
 import './App.css';
 import {useEffect, useReducer} from "react";
 import Dux from "./components/dux";
+import {Provider} from "react-redux";
+import {store} from "./store";
 
 const reducer = (prev, action) => {
   switch(action.type.toUpperCase()) {
@@ -57,14 +59,14 @@ function App() {
   }
 
   return (
-    <>
+    <Provider store={store}>
       <div className="App">
         <button onClick={sub}>-</button>
         <h1>{count}</h1>
         <button onClick={add}>+</button>
       </div>
       <Dux></Dux>
-    </>
+    </Provider>
   );
 }
 
