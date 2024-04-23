@@ -5,7 +5,7 @@ React中的钩子函数只能在函数组件或自定义钩子中调用。当我
  */
 import {useCallback, useState} from "react";
 
-export default function useFetch(api) {
+export default function useFetch(req) {
   const [data, setData] = useState()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
@@ -13,7 +13,15 @@ export default function useFetch(api) {
     try {
       setLoading(true)
       setError(null)
-      const res = await fetch(api)
+      const res = await fetch(`http://localhost:8080${req.url}`, {
+        method: req.method || 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: (!req.method || req.method.toLowerCase() === 'get') ? null : JSON.stringify({
+          data: req.data,
+        })
+      })
       if (res.ok) {
         setData(await res.json())
       } else {
