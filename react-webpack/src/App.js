@@ -1,5 +1,6 @@
 import './App.css';
 import {useEffect, useReducer} from "react";
+import Dux from "./components/dux";
 
 const reducer = (prev, action) => {
   switch(action.type.toUpperCase()) {
@@ -19,10 +20,10 @@ function App() {
       如果设置的是空数组，则useEffect只会在组件初始化的时候渲染一次。
    */
   useEffect(() => {
-    fetch('http://localhost:8080/stu/list')
-      .then(res => res.json())
-      .then(data => console.log(data))
-      .catch(err => console.log(err));
+  //   fetch('http://localhost:8080/stu/list')
+  //     .then(res => res.json())
+  //     .then(data => console.log(data))
+  //     .catch(err => console.log(err));
     /*
     在Effect的回调函数中，可以指定一个函数作为返回值，可以称其为清理函数，他会在下次useEffect执行前调用。可以在这个函数中，做一些工作来清除上一次useEffect执行所带来的影响。
      */
@@ -54,12 +55,16 @@ function App() {
       type: 'ADD',
     })
   }
+
   return (
-    <div className="App">
-      <button onClick={sub}>-</button>
-      <h1>{count}</h1>
-      <button onClick={add}>+</button>
-    </div>
+    <>
+      <div className="App">
+        <button onClick={sub}>-</button>
+        <h1>{count}</h1>
+        <button onClick={add}>+</button>
+      </div>
+      <Dux></Dux>
+    </>
   );
 }
 
