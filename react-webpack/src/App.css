@@ -2,18 +2,24 @@
   background-color: orange;
   width: 500px;
   height: 500px;
-  display: flex;
   justify-content: space-between;
   margin: 300px auto;
   padding: 200px 50px;
   align-items: center;
 }
 
-.App button {
-  width: 100px;
-  height: 50px;
+.operation {
+  padding-top: 50px;
 }
 
-.App h1 {
+.operation > select {
+  width: 40px;
+}
+
+.operation > button {
+  margin-left: 10px;
+}
+
+.App h2 {
   font-size: 20px;
 }
