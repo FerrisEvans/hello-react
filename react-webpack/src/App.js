@@ -2,7 +2,7 @@ import './App.css';
 import {useState} from "react";
 import store from "./redux/store";
 import {Provider} from "react-redux";
-import {createDecrementAction, createIncrementAction} from "./redux/action/count";
+import {createDecrementAction, createIncrementAction, createIncrementAsyncAction} from "./redux/action/count";
 
 function App() {
 
@@ -28,9 +28,7 @@ function App() {
   }
 
   const addAsync = () => {
-    setTimeout(() => {
-      store.dispatch(createIncrementAction(param))
-    }, 500)
+    store.dispatch(createIncrementAsyncAction(param))
   }
 
   return (
