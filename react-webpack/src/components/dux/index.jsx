@@ -1,7 +1,7 @@
 import './index.css'
 import '../../store'
 import {useDispatch, useSelector} from "react-redux";
-import {add, sub, store} from "../../store";
+import {add, sub} from "../../store";
 const Dux = () => {
 
   /*

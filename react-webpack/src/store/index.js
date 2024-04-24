@@ -1,4 +1,5 @@
 import {configureStore, createSlice} from "@reduxjs/toolkit";
+import api from "./api";
 
 const slice = createSlice({
   name: 'stu', // 用来自动生成action中的type
@@ -34,5 +35,9 @@ console.log(addAction);
 export const store = configureStore({
   reducer: {
     stu: slice.reducer,
+    [api.reducerPath]: api.reducer
+  },
+  middleware: (getDefaultMiddleware) => {
+    getDefaultMiddleware().concat(api.middleware);
   }
 })
