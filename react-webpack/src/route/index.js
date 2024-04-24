@@ -3,6 +3,7 @@ import Home from "../pages/Home";
 import {Navigate} from "react-router-dom";
 import Message from "../pages/Message";
 import News from "../pages/News";
+import Detail from "../pages/Detail";
 
 const routes = [
   {
@@ -19,7 +20,11 @@ const routes = [
       },
       {
         path: 'msg',
-        element: <Message />
+        element: <Message />,
+        children: [{
+          path: 'detail/:id',
+          element: <Detail />,
+        }]
       }
     ]
   },
