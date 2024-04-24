@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Link, Outlet} from "react-router-dom";
+import {Link, Outlet, useNavigate} from "react-router-dom";
 
 const Message = () => {
   const [msg] = useState([
@@ -24,6 +24,20 @@ const Message = () => {
       content: 'Content 04'
     }
   ])
+
+  // 编程式路由导航
+  const navigate = useNavigate();
+  const fn = () => {
+    navigate('detail', {
+      replace: false,
+      state: {
+        id: msg.id,
+        title: msg.title,
+        content: msg.content
+      }
+    })
+  }
+
   return (
     <div>
       <ul>
