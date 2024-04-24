@@ -1,16 +1,21 @@
 import './App.css';
 import {useState} from "react";
+import store from "./redux/store";
+import {Provider} from "react-redux";
+import {createDecrementAction, createIncrementAction} from "./redux/action/count";
 
 function App() {
-  const [sum, setSum] = useState(0)
+
+  const {count} = store.getState();
+
   const [param, setParam] = useState(1)
 
   const add = () => {
-    setSum(prevSum => prevSum + param)
+    store.dispatch(createIncrementAction(param))
   }
 
   const subtract = () => {
-    setSum(prevSum => prevSum - param)
+    store.dispatch(createDecrementAction(param))
   }
 
   const changeParam = (e) => {
@@ -18,20 +23,20 @@ function App() {
   }
 
   const addIfOdd = () => {
-    if (sum % 2 === 0) return;
-    setSum(prevSum => prevSum + param)
+    if (count % 2 === 0) return;
+    store.dispatch(createIncrementAction(param))
   }
 
   const addAsync = () => {
     setTimeout(() => {
-      setSum(prevSum => prevSum + param)
+      store.dispatch(createIncrementAction(param))
     }, 500)
   }
 
   return (
-    <>
+    <Provider store={store}>
       <div className='App'>
-        <h2>sum: {sum}</h2>
+        <h2>sum: {count}</h2>
         <div className='operation'>
           <select value={param} onChange={changeParam} name='param' id='sum-param'>
             <option value='1'>1</option>
@@ -44,7 +49,7 @@ function App() {
           <button onClick={addAsync}>inc async</button>
         </div>
       </div>
-    </>
+    </Provider>
   );
 }
 
