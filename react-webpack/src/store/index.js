@@ -1,5 +1,6 @@
 import {configureStore, createSlice} from "@reduxjs/toolkit";
 import api from "./api";
+import {setupListeners} from "@reduxjs/toolkit/query";
 
 const slice = createSlice({
   name: 'stu', // 用来自动生成action中的type
@@ -32,7 +33,7 @@ const addAction = add()
 console.log(addAction);
 
 // 创建store
-export const store = configureStore({
+const store = configureStore({
   reducer: {
     stu: slice.reducer,
     [api.reducerPath]: api.reducer
@@ -41,3 +42,7 @@ export const store = configureStore({
     getDefaultMiddleware().concat(api.middleware);
   }
 })
+
+setupListeners(store.dispatch)
+
+export default store

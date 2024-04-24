@@ -2,7 +2,23 @@ import React from 'react';
 import {useGetQuery} from "../store/api";
 
 const Rtkq = () => {
-  const result = useGetQuery();
+  /*
+  useQuery可以接收一个对象作为第二个参数 通过该对象可以对请求进行配置
+   */
+  const result = useGetQuery(null, {
+    // 指定返回结果
+    selectFromResult: result => result,
+    // 设置轮询间隔，单位毫秒，0代表不轮询
+    pollingInterval: 0,
+    // 设置是否跳过当前请求，默认false
+    skip: false,
+    // 设置是否每次都重新加载数据。也可以使用数字，表示正常缓存时间，单位秒
+    refetchOnMountOrArgChange: false,
+    // 是否在重新获取焦点时重载数据
+    refetchOnFocus: false,
+    // 是否在网络中断重连后重载数据
+    refetchOnReconnect: false
+  });
   console.log(result);
   /*
   currentData 当前参数的最新数据
