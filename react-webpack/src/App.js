@@ -1,9 +1,9 @@
 import './App.css';
-import {Navigate, NavLink, Route, Routes} from "react-router-dom";
-import About from "./pages/About";
-import Home from "./pages/Home";
+import {NavLink, useRoutes} from "react-router-dom";
+import routes from "./route";
 
 function App() {
+  const el = useRoutes(routes)
 
   return (
       <div className='App'>
@@ -16,11 +16,7 @@ function App() {
             <NavLink to='/home'>Home</NavLink>
           </div>
           <div>
-            <Routes>
-              <Route path='/about' element={<About/>} />
-              <Route path='/home' element={<Home/>} />
-              <Route path='/' element={<Navigate to='/about'/>} />
-            </Routes>
+            {el}
           </div>
         </div>
       </div>
